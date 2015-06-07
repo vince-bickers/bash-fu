@@ -1,0 +1,22 @@
+cd $1
+git init
+cat >.gitignore <<EOF
+target
+.project
+.settings
+.DS_Store
+.classpath
+.svn
+.idea
+*.iml
+*.class
+EOF
+
+project=$(basename $1)
+echo $project
+
+#git remote add origin "https://bitbucket.org/vbickers/"$project
+git remote add origin "git@bitbucket.org:vbickers/"$project".git"
+git add .
+git commit -m "First commit"
+git push -u origin --all
